@@ -1,0 +1,715 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>SAFE Protocol NLP Experiments &#8212; MSc Computing Individual Project</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Experiments Using The SAFE Protocol" href="safe-experiments.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">MSc Computing Individual Project</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    ICL MSc Computing Individual Project
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dp-experiment/openmined-dp-experiments.html">
+   OpenMined’s PyDP Tutorial
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="safe-experiments.html">
+   Experiments Using The SAFE Protocol
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   SAFE Protocol NLP Experiments
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/jjquek/indiv-project-exps/master?urlpath=tree/safe-experiments/safe-nlp-experiments.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jjquek/indiv-project-exps"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jjquek/indiv-project-exps/issues/new?title=Issue%20on%20page%20%2Fsafe-experiments/safe-nlp-experiments.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/safe-experiments/safe-nlp-experiments.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-a-class-anchor-id-introduction-a">
+   Introduction
+   <a class="anchor" id="introduction">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-trends-in-documents-are">
+     What Trends In Documents Are
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#formal-specification-of-the-task">
+     Formal Specification of The Task
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prior-calculation-a-class-anchor-id-prior-calculation-a">
+   Prior Calculation
+   <a class="anchor" id="prior-calculation">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#likelihood-calculation-a-class-anchor-id-likelihood-a">
+   Likelihood Calculation
+   <a class="anchor" id="likelihood">
+   </a>
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>SAFE Protocol NLP Experiments</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-a-class-anchor-id-introduction-a">
+   Introduction
+   <a class="anchor" id="introduction">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-trends-in-documents-are">
+     What Trends In Documents Are
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#formal-specification-of-the-task">
+     Formal Specification of The Task
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prior-calculation-a-class-anchor-id-prior-calculation-a">
+   Prior Calculation
+   <a class="anchor" id="prior-calculation">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#likelihood-calculation-a-class-anchor-id-likelihood-a">
+   Likelihood Calculation
+   <a class="anchor" id="likelihood">
+   </a>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="safe-protocol-nlp-experiments">
+<h1>SAFE Protocol NLP Experiments<a class="headerlink" href="#safe-protocol-nlp-experiments" title="Permalink to this headline">#</a></h1>
+<p>This notebook contains the following contents:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#introduction">Section 1: Introduction</a></p></li>
+<li><p><a class="reference external" href="#prior-calculation">Section 2: Prior Calculation</a></p></li>
+<li><p><a class="reference external" href="#likelihood-calculation-a-classanchor-idlikelihooda">Section 3: Likelihood Calculation</a></p></li>
+</ul>
+<p>It builds on top of <span class="xref myst">the other notebook where I illustrated the bare SAFE Protocol itself as well as some extensions to make it more secure</span>. This notebook specifically illustrates the application of SAFE to trend detection in document interactions.</p>
+<section id="introduction-a-class-anchor-id-introduction-a">
+<h2>Introduction <a class="anchor" id="introduction"></a><a class="headerlink" href="#introduction-a-class-anchor-id-introduction-a" title="Permalink to this headline">#</a></h2>
+<section id="what-trends-in-documents-are">
+<h3>What Trends In Documents Are<a class="headerlink" href="#what-trends-in-documents-are" title="Permalink to this headline">#</a></h3>
+<p>Huth and Chaulwar offer the following definition of a trend for interacted documents in their paper (Huth, Chaulwar, 4),</p>
+<blockquote>
+<div><p>“Keywords that are not frequently present in past interacted documents but that appear frequently in current interacted documents”</p>
+</div></blockquote>
+<p>They note that the definition is “very basic”. However, it suffices as a definition to illustrate how their Bayesian approach to federated analytics.</p>
+</section>
+<section id="formal-specification-of-the-task">
+<h3>Formal Specification of The Task<a class="headerlink" href="#formal-specification-of-the-task" title="Permalink to this headline">#</a></h3>
+<p>The terminology and description in this section is also taken from the paper.</p>
+<p>Key Terms:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(D\)</span> - Document Set</p></li>
+<li><p><span class="math notranslate nohighlight">\(t\)</span> - Trending Keyword</p></li>
+<li><p><span class="math notranslate nohighlight">\(V\)</span> - Set of possible trending keywords in <span class="math notranslate nohighlight">\(D\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(D_i\)</span> - subset of <span class="math notranslate nohighlight">\(D\)</span> that <span class="math notranslate nohighlight">\(user_i\)</span> has interacted with</p></li>
+</ul>
+<p>The aim is to determine a distribution <span class="math notranslate nohighlight">\(p(t | D)\)</span> that specifies a probability for a keyword in <span class="math notranslate nohighlight">\(V\)</span> being trending.</p>
+<p>Using Bayes formula, the task can be phrased as the determinination for each term <span class="math notranslate nohighlight">\(t_i\)</span> in <span class="math notranslate nohighlight">\(V\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    p(t_i = t | D) = \frac{P(D | t_i = t)p(t_i = t)}{p(D)}
+\]</div>
+<ul class="simple">
+<li><p>Application To Use Case</p></li>
+</ul>
+</section>
+</section>
+<section id="prior-calculation-a-class-anchor-id-prior-calculation-a">
+<h2>Prior Calculation <a class="anchor" id="prior-calculation"></a><a class="headerlink" href="#prior-calculation-a-class-anchor-id-prior-calculation-a" title="Permalink to this headline">#</a></h2>
+<p>Here we are interested in calculating the term <span class="math notranslate nohighlight">\(p(t_i = t)\)</span>, the prior discrete probablity for a keyword in <span class="math notranslate nohighlight">\(V\)</span> for being a trending keyword.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run code generating loading in/creating the data &amp; generating the prior distribution</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">prior distribution is modelled as a Dirichlet distribution parametized by the IDF of keywords in V</span>
+<span class="sd">- generate IDF of keywords in V</span>
+<span class="sd">- construct Dirichlet distribution using generated IDF as arg.</span>
+
+<span class="sd">running it iteratively: start with uniform priors,</span>
+
+<span class="sd">TODO - how do we update uniform priors over each distribution? -- assigning the result of each round as the new IDF parameter?</span>
+
+<span class="sd">can use tensorflow&#39;s probability library to generate the Dirichlet distribution.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;\nprior distribution is modelled as a Dirichlet distribution parametized by the IDF of keywords in V\n- generate IDF of keywords in V\n- construct Dirichlet distribution using generated IDF as arg.\n\nrunning it iteratively: start with uniform priors,\n\nTODO - how do we update uniform priors over each distribution? -- assigning the result of each round as the new IDF parameter?\n\ncan use tensorflow&#39;s probability library to generate the Dirichlet distribution.\n&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="likelihood-calculation-a-class-anchor-id-likelihood-a">
+<h2>Likelihood Calculation <a class="anchor" id="likelihood"></a><a class="headerlink" href="#likelihood-calculation-a-class-anchor-id-likelihood-a" title="Permalink to this headline">#</a></h2>
+<p>Each user has their own subset of the document set…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Describing the use case:</span>
+
+<span class="sd">3 users, they use the app for a month, once a day, 5 days a week. </span>
+
+<span class="sd">Every day, they answer a question, &quot;How are you feeling today?&quot;-- </span>
+
+<span class="sd">The answers given are something like,</span>
+
+<span class="sd">&quot;I felt joy&quot;</span>
+<span class="sd">&quot;I felt anger&quot;</span>
+<span class="sd">&quot;I felt fear&quot;</span>
+<span class="sd">&quot;I felt sadness&quot;</span>
+<span class="sd">&quot;I felt digust&quot;</span>
+<span class="sd">&quot;I felt surpise&quot;</span>
+
+<span class="sd"> Ekman 1992a:</span>
+
+<span class="sd">(joy, anger, fear, sadness, disgust, and surprise). &lt;= not very interesting.</span>
+
+<span class="sd">What about...</span>
+
+<span class="sd">And then they are prompted to journal in response to a follow-up question, &quot;Why did you feel that way?&quot;. NOTE: sentiment analysis is kind of redundant... here. They&#39;ve already indicated what they feel.</span>
+
+<span class="sd">These responses are stored in a list over the period of two weeks. (That&#39;s their own Di which we want to keep private).</span>
+
+<span class="sd">So, SAFE will help us to track, what emotions have people started to feel over time.</span>
+
+<span class="sd">METRICS:</span>
+<span class="sd">- count: how many people felt X over the 2 week period?</span>
+<span class="sd">- simple mean: what&#39;s the average number of people that felt X over a 4 month period?</span>
+
+<span class="sd"># TODO - feels like the use case doesn&#39;t make for very interesting extensions...</span>
+
+<span class="sd"># NOTE : extending the use case: something similar to what is tracked. Now trying to track what resources are being accessed within the app, so to keywords are now not emotions but general topics.</span>
+
+<span class="sd"># thinking through some of the extensions :(e.g. weighted mean)</span>
+<span class="sd">thoughts on weighted mean:</span>
+<span class="sd">- each obfuscated feature vector is sent with a weight.</span>
+<span class="sd">- how secure would this be? Well, it would reveal : e.g., that the user has been accessing a lot of articles. (even though it&#39;s not clear which articles)...But, then, if it turns out that a particular topic/emotion has been &#39;trending&#39;, wouldn&#39;t that reveal a bit much about those who had heavier weights?</span>
+
+<span class="sd">The Bayesian FA that uses SAFE would help us to compute : what&#39;s the probability of each keyword (emotion) being trending (i.e., felt more now than in past sessions)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># NOTE: maybe a good dataset to use would be GoEmotion? That&#39;s a large dataset that&#39;s been benchmarked academically.</span>
+
+<span class="c1"># step : Define D-- overall document set. </span>
+
+<span class="c1"># TODO - what are the document sets in this context? Would it be journal entries? </span>
+<span class="sd">&#39;&#39;&#39; </span>
+<span class="sd">Let&#39;s start with something simpler: let&#39;s say the document set is a set of possible answers to &#39;survey&#39; like questions. For instance,</span>
+
+<span class="sd"># NOTE:  base this on the emotion taxonomy mentioned in GoEmotion.</span>
+<span class="sd">responses = [</span>
+<span class="sd">    u&#39;I was upset today&#39;,</span>
+<span class="sd">    u&#39;I was ...&#39;,</span>
+<span class="sd">] &lt;= this list contains all the responses from each user. </span>
+
+<span class="sd">And then each user&#39;s D_i is the specific responses they clicked?</span>
+
+<span class="sd">And would the keywords be the emotions?</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="c1"># NOTE : if this is right, then there&#39;s no need for conference resolution? </span>
+<span class="c1"># TODO : are the only pre-processing steps necessary the keyword set calculation and the document frequency calculation in this particular use case?</span>
+<span class="c1"># NOTE : c.f. the PyTorch Deep Dive into NLP slides for methods that do the pre-processing for you.</span>
+
+<span class="c1"># D has a set of keywords, V, which are trending.</span>
+
+<span class="c1"># TODO - are the keywords the emotions? And then isn&#39;t there a low amount of keywords in V?</span>
+
+<span class="c1"># step: Each user&#39;s document sets are their answers.</span>
+
+<span class="c1"># TODO - what is p(D_i | t)?</span>
+
+<span class="c1"># Wouldn&#39;t it be fairly straightword? e.g. given that &#39;joy&#39; is trending, wouldn&#39;t it be the case that the document set would largely consists of the &#39;I have been feeling joyful&#39; today?</span>
+
+<span class="c1"># NOTE : comparing by ranking based on total count or pooled trend seems to be pretty easy to do...</span>
+
+<span class="c1"># TODO - get clear : why is a Dirichlet distribution used?</span>
+
+<span class="c1"># TODO - updating uniform priors iteratively</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Does that involve setting the p(t | D) that we get at one end of the result to be the new parameters for the dirichlet distribution used for the next round&#39;s priors?</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;\nDoes that involve setting the p(t | D) that we get at one end of the result to be the new parameters for the dirichlet distribution used for the next round&#39;s priors?\n&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"># todo - take from this example code block things which would be helpful to use</span>
+
+<span class="sd"># Rangarajan Krishnamoorthy, 2/2/2019</span>
+<span class="sd"># Using neuralcoref for coreference resolution</span>
+
+<span class="sd">taken from: https://www.rangakrish.com/index.php/2019/02/03/coreference-resolution-using-spacy/</span>
+
+<span class="sd">import spacy</span>
+<span class="sd">nlp = spacy.load(&#39;en_coref_lg&#39;) # TODO : see if the large coref model is the right choice.</span>
+
+<span class="sd">examples = [</span>
+<span class="sd">    u&#39;My sister has a dog and she loves him.&#39;,</span>
+<span class="sd">    u&#39;My sister has a dog and she loves him. He is cute.&#39;,</span>
+<span class="sd">    u&#39;My sister has a dog and she loves her.&#39;,</span>
+<span class="sd">    u&#39;My brother has a dog and he loves her.&#39;,</span>
+<span class="sd">    u&#39;Mary and Julie are sisters. They love chocolates.&#39;,</span>
+<span class="sd">    u&#39;John and Mary are neighbours. She admires him because he works hard.&#39;,</span>
+<span class="sd">    u&#39;X and Y are neighbours. She admires him because he works hard.&#39;,</span>
+<span class="sd">    u&#39;The dog chased the cat. But it escaped.&#39;,</span>
+<span class="sd">]</span>
+
+<span class="sd">def printMentions(doc):</span>
+<span class="sd">    print &#39;\nAll the &quot;mentions&quot; in the given text:&#39;</span>
+<span class="sd">    for cluster in doc._.coref_clusters:</span>
+<span class="sd">        print cluster.mentions</span>
+
+<span class="sd">def printPronounReferences(doc):</span>
+<span class="sd">    print &#39;\nPronouns and their references:&#39;</span>
+<span class="sd">    for token in doc:</span>
+<span class="sd">        if token.pos_ == &#39;PRON&#39; and token._.in_coref:</span>
+<span class="sd">            for cluster in token._.coref_clusters:</span>
+<span class="sd">                print token.text + &quot; =&gt; &quot; + cluster.main.text</span>
+
+<span class="sd">def processDoc(text):</span>
+<span class="sd">    doc = nlp(text)</span>
+<span class="sd">    if doc._.has_coref:</span>
+<span class="sd">        print &quot;Given text: &quot; + text</span>
+<span class="sd">        printMentions(doc)</span>
+<span class="sd">        printPronounReferences(doc)</span>
+
+<span class="sd">if __name__ == &quot;__main__&quot;:</span>
+<span class="sd">    processDoc(examples[8])</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\n# todo - take from this example code block things which would be helpful to use\n\n# Rangarajan Krishnamoorthy, 2/2/2019\n# Using neuralcoref for coreference resolution\n\ntaken from: https://www.rangakrish.com/index.php/2019/02/03/coreference-resolution-using-spacy/\n\nimport spacy\nnlp = spacy.load(\&#39;en_coref_lg\&#39;) # TODO : see if the large coref model is the right choice.\n\nexamples = [\n    u\&#39;My sister has a dog and she loves him.\&#39;,\n    u\&#39;My sister has a dog and she loves him. He is cute.\&#39;,\n    u\&#39;My sister has a dog and she loves her.\&#39;,\n    u\&#39;My brother has a dog and he loves her.\&#39;,\n    u\&#39;Mary and Julie are sisters. They love chocolates.\&#39;,\n    u\&#39;John and Mary are neighbours. She admires him because he works hard.\&#39;,\n    u\&#39;X and Y are neighbours. She admires him because he works hard.\&#39;,\n    u\&#39;The dog chased the cat. But it escaped.\&#39;,\n]\n\ndef printMentions(doc):\n    print \&#39;\nAll the &quot;mentions&quot; in the given text:\&#39;\n    for cluster in doc._.coref_clusters:\n        print cluster.mentions\n\ndef printPronounReferences(doc):\n    print \&#39;\nPronouns and their references:\&#39;\n    for token in doc:\n        if token.pos_ == \&#39;PRON\&#39; and token._.in_coref:\n            for cluster in token._.coref_clusters:\n                print token.text + &quot; =&gt; &quot; + cluster.main.text\n\ndef processDoc(text):\n    doc = nlp(text)\n    if doc._.has_coref:\n        print &quot;Given text: &quot; + text\n        printMentions(doc)\n        printPronounReferences(doc)\n\nif __name__ == &quot;__main__&quot;:\n    processDoc(examples[8])\n\n&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "my_venv"
+        },
+        kernelOptions: {
+            kernelName: "my_venv",
+            path: "./safe-experiments"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'my_venv'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="safe-experiments.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Experiments Using The SAFE Protocol</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Barry Quek Jing Jet<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

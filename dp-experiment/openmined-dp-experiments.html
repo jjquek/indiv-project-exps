@@ -1,0 +1,673 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>OpenMined’s PyDP Tutorial &#8212; MSc Computing Individual Project</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Experiments Using The SAFE Protocol" href="../safe-experiments/safe-experiments.html" />
+    <link rel="prev" title="ICL MSc Computing Individual Project" href="../intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">MSc Computing Individual Project</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    ICL MSc Computing Individual Project
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   OpenMined’s PyDP Tutorial
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../safe-experiments/safe-experiments.html">
+   Experiments Using The SAFE Protocol
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../safe-experiments/safe-nlp-experiments.html">
+   SAFE Protocol NLP Experiments
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/jjquek/indiv-project-exps/master?urlpath=tree/dp-experiment/openmined-dp-experiments.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jjquek/indiv-project-exps"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jjquek/indiv-project-exps/issues/new?title=Issue%20on%20page%20%2Fdp-experiment/openmined-dp-experiments.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/dp-experiment/openmined-dp-experiments.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   OpenMined’s PyDP Tutorial
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-necessary-files">
+   Importing Necessary Files
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-in-the-dataset">
+   Reading in the Dataset
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-an-adjacent-dataset">
+   Creating an Adjacent Dataset
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#illustrating-a-membership-inference-attack">
+   Illustrating A Membership Inference Attack
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#showing-how-a-differentially-private-sum-is-not-susceptible-to-the-same-attack">
+   Showing How a Differentially Private Sum Is Not Susceptible To The Same Attack
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>OpenMined’s PyDP Tutorial</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   OpenMined’s PyDP Tutorial
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-necessary-files">
+   Importing Necessary Files
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-in-the-dataset">
+   Reading in the Dataset
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-an-adjacent-dataset">
+   Creating an Adjacent Dataset
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#illustrating-a-membership-inference-attack">
+   Illustrating A Membership Inference Attack
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#showing-how-a-differentially-private-sum-is-not-susceptible-to-the-same-attack">
+   Showing How a Differentially Private Sum Is Not Susceptible To The Same Attack
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="openmined-s-pydp-tutorial">
+<h1>OpenMined’s PyDP Tutorial<a class="headerlink" href="#openmined-s-pydp-tutorial" title="Permalink to this headline">#</a></h1>
+<p>Here I follow <a class="reference external" href="https://blog.openmined.org/differential-privacy-using-pydp/">OpenMined’s tutorial on using their Python wrapper for Google’s DP library, PyDP</a>.</p>
+</section>
+<section id="importing-necessary-files">
+<h1>Importing Necessary Files<a class="headerlink" href="#importing-necessary-files" title="Permalink to this headline">#</a></h1>
+<p>I’ve already imported <code class="docutils literal notranslate"><span class="pre">pydp</span></code> into <code class="docutils literal notranslate"><span class="pre">my_venv</span></code>. I begin by importing the necessary files.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pydp</span> <span class="k">as</span> <span class="nn">dp</span> <span class="c1"># by convention our package is to be imported as dp (dp for Differential Privacy!)</span>
+<span class="kn">from</span> <span class="nn">pydp.algorithms.laplacian</span> <span class="kn">import</span> <span class="n">BoundedSum</span><span class="p">,</span> <span class="n">BoundedMean</span><span class="p">,</span> <span class="n">Count</span><span class="p">,</span> <span class="n">Max</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statistics</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pydp</span> <span class="k">as</span> <span class="nn">dp</span> <span class="c1"># by convention our package is to be imported as dp (dp for Differential Privacy!)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">pydp.algorithms.laplacian</span> <span class="kn">import</span> <span class="n">BoundedSum</span><span class="p">,</span> <span class="n">BoundedMean</span><span class="p">,</span> <span class="n">Count</span><span class="p">,</span> <span class="n">Max</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pydp&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reading-in-the-dataset">
+<h1>Reading in the Dataset<a class="headerlink" href="#reading-in-the-dataset" title="Permalink to this headline">#</a></h1>
+<p>We’re working a 5000-record dataset, split across 5 files with 1000 records each.</p>
+<p>Let’s grab the data from each file, store it into a <code class="docutils literal notranslate"><span class="pre">pd.dataframe</span></code>, and see the first 5 rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># file 1</span>
+<span class="n">url1</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/OpenMined/PyDP/dev/examples/Tutorial_4-Launch_demo/data/01.csv&#39;</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url1</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">engine</span> <span class="o">=</span> <span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># file 2</span>
+<span class="n">url2</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/OpenMined/PyDP/dev/examples/Tutorial_4-Launch_demo/data/02.csv&#39;</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url2</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">engine</span> <span class="o">=</span> <span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># file 3</span>
+<span class="n">url3</span> <span class="o">=</span><span class="s1">&#39;https://raw.githubusercontent.com/OpenMined/PyDP/dev/examples/Tutorial_4-Launch_demo/data/03.csv&#39;</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url3</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">engine</span> <span class="o">=</span> <span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="n">df3</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># file 4</span>
+<span class="n">url4</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/OpenMined/PyDP/dev/examples/Tutorial_4-Launch_demo/data/04.csv&#39;</span>
+<span class="n">df4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url4</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">engine</span> <span class="o">=</span> <span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># file 5</span>
+<span class="n">url5</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/OpenMined/PyDP/dev/examples/Tutorial_4-Launch_demo/data/05.csv&#39;</span>
+<span class="n">df5</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url5</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">engine</span> <span class="o">=</span> <span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df5</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have all 5 files, let’s concatenate them into a single <code class="docutils literal notranslate"><span class="pre">pd.dataframe</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined_df_temp</span> <span class="o">=</span> <span class="p">[</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">df3</span><span class="p">,</span> <span class="n">df4</span><span class="p">,</span> <span class="n">df5</span><span class="p">]</span>
+<span class="n">original_dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">combined_df_temp</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">original_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-an-adjacent-dataset">
+<h1>Creating an Adjacent Dataset<a class="headerlink" href="#creating-an-adjacent-dataset" title="Permalink to this headline">#</a></h1>
+<p>To illustrate Differential Privacy, let’s create an <strong>adjacent dataset</strong> from this dataframe. We’ll remove the first non-header row and save that to another dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">redact_dataset</span> <span class="o">=</span> <span class="n">original_dataset</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">redact_dataset</span> <span class="o">=</span> <span class="n">redact_dataset</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">original_dataset</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">redact_dataset</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="illustrating-a-membership-inference-attack">
+<h1>Illustrating A Membership Inference Attack<a class="headerlink" href="#illustrating-a-membership-inference-attack" title="Permalink to this headline">#</a></h1>
+<p>Below, we show that it possible to identify the presence of someone in a dataset even after we’ve removed personal identifier information. In this case, we can derive the amount that Osbourne had spent by taking the difference between the sum of these two adjacent datasets. With the amount the missing entry had spent, we can easily found whose record was removed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sum_original_dataset</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">original_dataset</span><span class="p">[</span><span class="s1">&#39;sales_amount&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">sum_redact_dataset</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">redact_dataset</span><span class="p">[</span><span class="s1">&#39;sales_amount&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">sales_amount_Osbourne</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">sum_original_dataset</span> <span class="o">-</span> <span class="n">sum_redact_dataset</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">sales_amount_Osbourne</span> <span class="o">==</span> <span class="n">original_dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="showing-how-a-differentially-private-sum-is-not-susceptible-to-the-same-attack">
+<h1>Showing How a Differentially Private Sum Is Not Susceptible To The Same Attack<a class="headerlink" href="#showing-how-a-differentially-private-sum-is-not-susceptible-to-the-same-attack" title="Permalink to this headline">#</a></h1>
+<p>However, such an attack can be prevented if we use a differentially private sum operation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dp_sum_original_dataset</span> <span class="o">=</span> <span class="n">BoundedSum</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">lower_bound</span> <span class="o">=</span>  <span class="mi">5</span><span class="p">,</span> <span class="n">upper_bound</span> <span class="o">=</span> <span class="mi">250</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span> 
+<span class="n">dp_sum_og</span> <span class="o">=</span> <span class="n">dp_sum_original_dataset</span><span class="o">.</span><span class="n">quick_result</span><span class="p">(</span><span class="n">original_dataset</span><span class="p">[</span><span class="s1">&#39;sales_amount&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+<span class="n">dp_sum_og</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">dp_sum_og</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dp_sum_og</span><span class="p">)</span>
+
+<span class="c1"># Output dp_sum_og</span>
+<span class="c1"># 636723.61</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dp_redact_dataset</span> <span class="o">=</span> <span class="n">BoundedSum</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">lower_bound</span> <span class="o">=</span>  <span class="mi">5</span><span class="p">,</span> <span class="n">upper_bound</span> <span class="o">=</span> <span class="mi">250</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+<span class="n">dp_redact_dataset</span><span class="o">.</span><span class="n">add_entries</span><span class="p">(</span><span class="n">redact_dataset</span><span class="p">[</span><span class="s1">&#39;sales_amount&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+<span class="n">dp_sum_redact</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">dp_redact_dataset</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dp_sum_redact</span><span class="p">)</span>
+
+<span class="c1"># Output dp_sum_redact</span>
+<span class="c1"># 636659.17</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sum of sales_value in the orignal dataset: </span><span class="si">{</span><span class="n">sum_original_dataset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sum of sales_value in the orignal dataset with DP: </span><span class="si">{</span><span class="n">dp_sum_og</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">dp_sum_og</span> <span class="o">!=</span> <span class="n">sum_original_dataset</span>
+
+<span class="c1"># Output</span>
+<span class="c1"># Sum of sales_value in the orignal dataset: 636594.59</span>
+<span class="c1"># Sum of sales_value in the orignal dataset with DP: 636723.61</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sum of sales_value in the second dataset: </span><span class="si">{</span><span class="n">sum_redact_dataset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sum of sales_value in the second dataset with DP: </span><span class="si">{</span><span class="n">dp_sum_redact</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">dp_sum_redact</span> <span class="o">!=</span> <span class="n">sum_redact_dataset</span>
+
+<span class="c1"># Output</span>
+<span class="c1"># Sum of sales_value in the second dataset: 636562.65</span>
+<span class="c1"># Sum of sales_value in the second dataset with DP: 636659.17</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Difference in Sum with DP: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">dp_sum_og</span> <span class="o">-</span> <span class="n">dp_sum_redact</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Actual Difference in Sum: </span><span class="si">{</span><span class="n">sales_amount_Osbourne</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">round</span><span class="p">(</span><span class="n">dp_sum_og</span> <span class="o">-</span> <span class="n">dp_sum_redact</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">!=</span> <span class="n">sales_amount_Osbourne</span>
+
+<span class="c1"># Output</span>
+<span class="c1"># Difference in sum using DP: 64.44</span>
+<span class="c1"># Actual Value: 31.94</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "my_venv"
+        },
+        kernelOptions: {
+            kernelName: "my_venv",
+            path: "./dp-experiment"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'my_venv'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">ICL MSc Computing Individual Project</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../safe-experiments/safe-experiments.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Experiments Using The SAFE Protocol</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Barry Quek Jing Jet<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
