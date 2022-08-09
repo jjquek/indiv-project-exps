@@ -1,5 +1,5 @@
-## Overview
-- [Overview](#overview)
+## Table of Contents
+- [Table of Contents](#table-of-contents)
   - [General Info](#general-info)
       - [Federated Anaytics](#federated-anaytics)
     - [Experiments Run](#experiments-run)
@@ -9,7 +9,7 @@
 
 This repo contains files I used to run experiments with protocols defined in the field of **Federated Analytics** for my master's project. 
 
-See the book online [here].
+See the book online [here](https://jjquek.github.io/indiv-project-exps/intro.html).
 
 ##### Federated Anaytics
 
