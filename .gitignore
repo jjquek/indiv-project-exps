@@ -80,5 +80,6 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# Example files
+# files for reference
 example-references.bib
+note-to-self.md

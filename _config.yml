@@ -14,9 +14,13 @@ latex:
   latex_documents:
     targetname: project-experiments.tex
 
-# TODO - Add a bibtex file so that I can create citations
-# bibtex_bibfiles:
-#   - references.bib
+sphinx:
+  config:
+    bibtex_reference_style: author_year
+
+bibtex_bibfiles:
+  - references.bib
+
 
 # Information about where the book exists on the web
 repository:
