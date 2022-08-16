@@ -4,6 +4,7 @@
 format: jb-book
 root: intro
 chapters:
-- file: dp-experiment/openmined-dp-experiments.ipynb
-- file: safe-experiments/safe-experiments.ipynb
-- file: safe-experiments/safe-nlp-experiments.ipynb
+# - file: dp-experiment/openmined-dp-experiments.ipynb
+- file: safe-experiments/safe-illustration.ipynb
+- file: safe-experiments/safe-improved.ipynb
+# - file: safe-experiments/safe-nlp-experiments.ipynb
