@@ -14,9 +14,92 @@
 }
 
 @misc{wiki:Pseudorandom_number_generator,
-   author = "Wikipedia",
-   title = "{Pseudorandom number generator} --- {W}ikipedia{,} The Free Encyclopedia",
-   year = "2022",
-   howpublished = {\url{http://en.wikipedia.org/w/index.php?title=Pseudorandom\%20number\%20generator&oldid=1103639197}},
-   note = "[Online; accessed 16-August-2022]"
+  author = "Wikipedia",
+  title = "{Pseudorandom number generator} --- {W}ikipedia{,} The Free Encyclopedia",
+  year = "2022",
+  howpublished = {\url{http://en.wikipedia.org/w/index.php?title=Pseudorandom\%20number\%20generator&oldid=1103639197}},
+  note = "[Online; accessed 16-August-2022]"
+}
+
+@misc{wiki:Diffie–Hellman_key_exchange,
+  author = "Wikipedia",
+  title = "{Diffie–Hellman key exchange} --- {W}ikipedia{,} The Free Encyclopedia",
+  year = "2022",
+  howpublished = {\url{http://en.wikipedia.org/w/index.php?title=Diffie\%E2\%80\%93Hellman\%20key\%20exchange&oldid=1103600870}},
+  note = "[Online; accessed 17-August-2022]"
+}
+
+@misc{se:generalize-diffe-helman,
+  author = "Stack Exchange",
+  title = "Sharing a secret between many users",
+  year = "2015",
+  howpublished = {\url{https://crypto.stackexchange.com/questions/25933/sharing-a-secret-key-between-many-users}},
+  note = "[Online; accessed 17-August-2022]"
+}
+
+ misc{medium:dlp-and-diffe-helman,
+   author = "Sebastia Agramunt-Puig",
+   title = "Discrete logarithm problem and Diffie-Hellman key exchange",
+   year = "2020",
+   howpublished = {\url{https://sebastiaagramunt.medium.com/discrete-logarithm-problem-and-diffie-hellman-key-exchange-821a45202d26}},
+   note = "[Online; accessed 17-August-2022]"
  }
+
+@article{10.1093/comjnl/bxh111,
+    author = {Tseng, Yuh-Min},
+    title = "{A Robust Multi-Party Key Agreement Protocol Resistant to Malicious Participants}",
+    journal = {The Computer Journal},
+    volume = {48},
+    number = {4},
+    pages = {480-487},
+    year = {2005},
+    month = {01},
+    abstract = "{By its very nature, a non-authenticated multi-party key agreement protocol cannot provide participant and message authentication, so it must rely on an authenticated network channel. This paper presents the inability of two famous multi-party key agreement protocols to withstand malicious participant attacks, even though their protocols are based on the authenticated network channel. This attack involves a malicious participant disrupting the multi-party key agreement among honest participants. In this case, other honest participants do not correctly agree on a common key. Obviously, the malicious participant cannot obtain the common key either, and the communication confidentiality among participants is not breached. However, in some emergency situations or applications, a multi-party key agreement protocol design that is resistant to malicious participants is useful. Therefore, in this paper, a non-authenticated multi-party key agreement protocol resistant to malicious participants is proposed. The proposed robust protocol requires constant rounds to establish a common key. Each participant broadcasts a constant number of messages. Under the assumption of the Decision Diffie–Hellman problem and the random oracle model, we will show that the proposed protocol is provably secure against passive adversaries and malicious participants.}",
+    issn = {0010-4620},
+    doi = {10.1093/comjnl/bxh111},
+    url = {https://doi.org/10.1093/comjnl/bxh111},
+    eprint = {https://academic.oup.com/comjnl/article-pdf/48/4/480/986056/bxh111.pdf},
+}
+
+@InProceedings{10.1007/978-3-540-45146-4_7,
+author="Katz, Jonathan
+and Yung, Moti",
+editor="Boneh, Dan",
+title="Scalable Protocols for Authenticated Group Key Exchange",
+booktitle="Advances in Cryptology - CRYPTO 2003",
+year="2003",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="110--125",
+abstract="We consider the fundamental problem of authenticated group key exchange among n parties within a larger and insecure public network. A number of solutions to this problem have been proposed; however, all provably-secure solutions thus far are not scalable and, in particular, require n rounds. Our main contribution is the first scalable protocol for this problem along with a rigorous proof of security in the standard model under the DDH assumption; our protocol uses a constant number of rounds and requires only O(1) modular exponentiations per user (for key derivation). Toward this goal and of independent interest, we first present a scalable compiler that transforms any group key-exchange protocol secure against a passive eavesdropper to an authenticated protocol which is secure against an active adversary who controls all communication in the network. This compiler adds only one round and O(1) communication (per user) to the original scheme. We then prove secure --- against a passive adversary --- a variant of the two-round group key-exchange protocol of Burmester and Desmedt. Applying our compiler to this protocol results in a provably-secure three-round protocol for authenticated group key exchange which also achieves forward secrecy.",
+isbn="978-3-540-45146-4"
+}
+
+@misc{wiki:Linear_congruential_generator,
+  author = "Wikipedia",
+  title = "{Linear congruential generator} --- {W}ikipedia{,} The Free Encyclopedia",
+  year = "2022",
+  howpublished = {\url{http://en.wikipedia.org/w/index.php?title=Linear\%20congruential\%20generator&oldid=1102727517}},
+  note = "[Online; accessed 17-August-2022]"
+}
+
+@article{DBLP:journals/corr/abs-2001-05304,
+  author    = {Guy L. Steele Jr. and
+               Sebastiano Vigna},
+  title     = {Computationally easy, spectrally good multipliers for congruential
+               pseudorandom number generators},
+  journal   = {CoRR},
+  volume    = {abs/2001.05304},
+  year      = {2020},
+  url       = {https://arxiv.org/abs/2001.05304},
+  eprinttype = {arXiv},
+  eprint    = {2001.05304},
+  timestamp = {Fri, 24 Jan 2020 16:59:36 +0100},
+  biburl    = {https://dblp.org/rec/journals/corr/abs-2001-05304.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{DowneyGeneratingPF,
+  title={Generating Pseudo-random Floating-Point Values},
+  author={Allen B. Downey}
+}
