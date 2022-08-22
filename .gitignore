@@ -83,3 +83,6 @@ cython_debug/
 # files for reference
 example-references.bib
 note-to-self.md
+archive-code.py
+100-float-values.txt
+text_dump.md
