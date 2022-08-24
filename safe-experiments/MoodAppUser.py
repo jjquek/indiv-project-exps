@@ -33,6 +33,6 @@ class MoodAppUser:
         """
         self.generate_missing_keyword_frequencies()
         for frequency in self.keyword_frequencies.values():
-            self.feature_vector.append(frequency / self.no_of_responses)    
+            self.feature_vector.append(round(frequency / self.no_of_responses, 4))    
 
 # TODO : will want to define the 'generate_shares' method for each user. And essentially make the run object oriented.

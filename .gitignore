@@ -55,6 +55,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+project_venv/
 
 # Spyder project settings
 .spyderproject
@@ -88,3 +89,4 @@ archive-code.py
 text_dump.md
 sample-d-values.txt
 secure-mpc-D-generation.ipynb
+openmined-dp-experiments.ipynb
