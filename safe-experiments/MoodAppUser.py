@@ -1,21 +1,28 @@
-from typing import List, Dict
-from nptyping import NDArray, Float
+from typing import List, Dict, Union
 from itertools import repeat
 from collections import Counter
 import random as r
 import numpy as np
+from nptyping import NDArray, Float
+from secure_SAFE_utils import SharedPRNG
+
+DocumentSet = Union[List[int], Dict[int, List[int]]] # NOTE -not sure if this is the best way to do it.
+
+# NOTE - I really should have designed the class more carefully before coding it up.
 
 class MoodAppUser:
     POSSIBLE_KEYWORDS = [0, 1, 2, 3, 4, 5, 6]
     D_Value = None # replace with some default value.
+    shared_PRNG = None
+    PRNG_seeded = False
 
     def __init__(self, id:int, inputs: List[int]) -> None:
         # initialized on instance construction
         self.id: int = id
         self.other_user_ids: List[int] = []
-        self.document_set: List[int] = inputs
-        self.no_of_responses: int = len(inputs)
+        self.document_set: DocumentSet = inputs
         self.keyword_frequencies = Counter(inputs)
+        # NOTE - next time I'll wanna be clear about whether these all belong in the constructor. Arguably I should have separated giving each user an id and then assigning their document set
         self.feature_vector: NDArray[Float] = [] # List converted to NDArray
         self.generate_feature_vector()
         # initialized when protocol starts
@@ -25,8 +32,7 @@ class MoodAppUser:
         self.obfuscated_feature_v: NDArray[Float] = None 
     
     @classmethod
-    def set_D_value(cls, value_is_random = False, 
-                   shared_seed = None, PRNG_seeded = False) -> None:
+    def set_D_value(cls, value_is_random: bool = False, shared_seed: int = None) -> None:
         """
         * sets the class attribute 'D_Value' for all instances (users) to use for a round of the safe Protocol
 
@@ -36,6 +42,17 @@ class MoodAppUser:
         if not value_is_random:
             cls.D_Value = 100.0
             return
+        
+        assert shared_seed != None, "Shared seed needs to be passed in for randomized D value run"
+        
+        if cls.PRNG_seeded:
+            cls.D_Value = cls.shared_PRNG.random()
+            return
+        
+        cls.shared_PRNG = SharedPRNG(shared_seed)
+        cls.PRNG_seeded = True
+        cls.D_Value = cls.shared_PRNG.random()
+            
 
     def generate_missing_keyword_frequencies(self) -> None:
         """
@@ -57,8 +74,9 @@ class MoodAppUser:
         - each value in the list is the proportion of the given response's frequency in the document set 
         """
         self.generate_missing_keyword_frequencies()
+        no_of_responses = len(self.document_set)
         for frequency in self.keyword_frequencies.values():
-            self.feature_vector.append(frequency / self.no_of_responses)
+            self.feature_vector.append(frequency / no_of_responses)
         self.feature_vector = np.round(self.feature_vector, 4)
 
     def generate_shares_to_send(self, number_of_users: int,
