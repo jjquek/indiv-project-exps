@@ -6,9 +6,7 @@ import numpy as np
 from nptyping import NDArray, Float
 from secure_SAFE_utils import SharedPRNG
 
-DocumentSet = Union[List[int], Dict[int, List[int]]] # NOTE -not sure if this is the best way to do it.
-
-# NOTE - I really should have designed the class more carefully before coding it up.
+DocumentSet = Union[List[int], Dict[int, List[int]]] .
 
 class MoodAppUser:
     POSSIBLE_KEYWORDS = [0, 1, 2, 3, 4, 5, 6]
@@ -22,7 +20,6 @@ class MoodAppUser:
         self.other_user_ids: List[int] = []
         self.document_set: DocumentSet = inputs
         self.keyword_frequencies = Counter(inputs)
-        # NOTE - next time I'll wanna be clear about whether these all belong in the constructor. Arguably I should have separated giving each user an id and then assigning their document set
         self.feature_vector: NDArray[Float] = [] # List converted to NDArray
         self.generate_feature_vector()
         # initialized when protocol starts
