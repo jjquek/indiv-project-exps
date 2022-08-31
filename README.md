@@ -29,3 +29,4 @@ It is closely related to the field of **Federated Learning**, where the aim is t
 ### References
 - [Google On Federated Analytics](https://ai.googleblog.com/2020/05/federated-analytics-collaborative-data.html)
 - [SAFE Protocol Paper](https://arxiv.org/abs/2107.13640)
+- [Paper for DP Model](https://arxiv.org/abs/1402.3329)
